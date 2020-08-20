@@ -16,11 +16,16 @@ kubectl apply -f all-in-one.yaml
 
 kubectl -n elastic-system logs -f statefulset.apps/elastic-operator
 
-kubectl.exe apply -f elasticsearch.yaml,
-kubectl.exe apply -f kibana.yaml,
-kubectl.exe apply -f filebeat.yaml,
-kubectl.exe apply -f deployment.yaml,
+kubectl.exe apply -f elasticsearch.yaml
+
+kubectl.exe apply -f kibana.yaml
+
+kubectl.exe apply -f filebeat.yaml
+
+kubectl.exe apply -f deployment.yaml
+
 kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')
+
 kubectl port-forward service/kibana-name-kb-http 5601
 
 # Login to Kibana dashboard,
