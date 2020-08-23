@@ -24,7 +24,7 @@ kubectl.exe apply -f filebeat.yaml
 
 kubectl.exe apply -f deployment.yaml
 
-kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')
+kubectl get secret quickstart-es-elastic-user -o=jsonpath='{.data.elastic}' | base64 --decode; echo
 
 kubectl port-forward service/kibana-name-kb-http 5601
 
